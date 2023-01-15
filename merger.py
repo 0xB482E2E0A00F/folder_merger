@@ -70,10 +70,11 @@ def copy_file_to_dest(src_path, dst_path):
 def copy_files_to_destination(selected_folders, dst_dir):
     for folder in selected_folders[1:]:
         logger.debug(f"Processing folder {folder}")
-        for subdir, dirs, files in os.walk(folder):for file in files:
-            src_path = os.path.join(subdir, file)
-            dst_path = os.path.join(dst_dir, file)
-            copy_file_to_dest(src_path, dst_path)
+        for subdir, dirs, files in os.walk(folder):
+            for file in files:
+                src_path = os.path.join(subdir, file)
+                dst_path = os.path.join(dst_dir, file)
+                copy_file_to_dest(src_path, dst_path)
 
 def main():
     try:
